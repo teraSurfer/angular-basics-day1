@@ -22,4 +22,7 @@ private baseUrl = "http://192.168.0.103:3030";
     return this.http.delete(`${this.baseUrl}/players/${id}`);
   }
 
+  createPlayer(player: Player) {
+    return this.http.post(`${this.baseUrl}/players`, player);
+  }
 }

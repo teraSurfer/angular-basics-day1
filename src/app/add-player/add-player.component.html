@@ -1,3 +1,27 @@
-<p>
-  add-player works!
-</p>
+<div class="container">
+  <div class="card">
+    <form (ngSubmit)="createPlayer()">
+      <div class="form-group">
+        <label for="id">ID:</label>
+        <input type="text" name="id" [(ngModel)]="player.id" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" name="name" [(ngModel)]="player.name" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="country">Country:</label>
+        <input type="text" name="country" [(ngModel)]="player.country" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="category">Category:</label>
+        <input type="text" name="category" [(ngModel)]="player.category" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="image">Image:</label>
+        <input type="text" name="image" [(ngModel)]="player.image" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-outline-success">Create Player</button>
+    </form>
+  </div>
+</div>
