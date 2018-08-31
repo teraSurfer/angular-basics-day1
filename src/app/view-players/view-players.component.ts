@@ -8,20 +8,26 @@ import { Player } from '../player';
   styleUrls: ['./view-players.component.scss']
 })
 export class ViewPlayersComponent implements OnInit {
-
+  page = 1;
   players: Player[] = [];
+  playersPerPage: number = 5;
+  playersLength: number;
   constructor(private service: CricketService) { }
 
   ngOnInit() {
     console.log('hello');
-    this.getAllPlayers();
+    this.getPlayers(0, this.playersPerPage);
   }
 
-  getAllPlayers () {
-    console.log('hi');
-    this.service.getPlayers().subscribe((res: any) => {
+  loadPage(evt) {
+    this.getPlayers(evt-1, this.playersPerPage);
+  }
+
+  getPlayers (skip, limit?:number) {
+    this.service.getPlayers(skip*this.playersPerPage, limit).subscribe((res: any)=> {
       this.players = res.data;
-      console.log(this.players);
+      this.playersLength = res.total;
+      console.log(this.playersLength);
     }, err => {
       console.log(err);
     })

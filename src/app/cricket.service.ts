@@ -10,7 +10,14 @@ export class CricketService {
 private baseUrl = "http://192.168.0.103:3030";  
   constructor(private http: HttpClient) { }
   
-  getPlayers () {
+  getPlayers (skip?: number, limit?: number) {
+    if(skip && limit){
+      return this.http.get(`${this.baseUrl}/players?$skip=${skip}&$limit=${limit}`);
+    } else if (skip) {
+      return this.http.get(`${this.baseUrl}/players?$skip=${skip}`);
+    } else if (limit) {
+      return this.http.get(`${this.baseUrl}/players?$limit=${limit}`);
+    } else
     return this.http.get(`${this.baseUrl}/players`);
   }
 
