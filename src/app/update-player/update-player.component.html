@@ -1,3 +1,41 @@
-<p>
-  update-player works!
-</p>
+<div class="container">
+  <div class="card update-card">
+    <h2 class="card-title">Player List</h2>
+    <div class="form-group">
+      <select class="form-control" (change)="changePlayer($event.target.value)">
+        <option value="">Select Player</option>
+        <option *ngFor="let plr of playerList" [value]="plr.id">{{plr.id}} - {{plr.name}}</option>
+      </select>
+    </div>
+    <div class="card" *ngIf="selectedPlayer">
+      <img class="card-img-top" [src]="selectedPlayer.image" style="max-width: 300px; height: 250px;">
+      <h3 class="card-title">{{selectedPlayer.name}}</h3>
+      <pre class="card-text">
+      Country: {{selectedPlayer.country}}
+      Category: {{selectedPlayer.category}}
+    </pre>
+      <button class="btn btn-outline-danger" (click)="editPlayer()">Edit Player</button>
+    </div>
+    <div class="card" *ngIf="showEditor">
+      <form (ngSubmit)="updatePlayer()">
+        <div class="form-group">
+          <label for="player-image">Image Url:</label>
+          <input type="text" class="form-control" name="player-image" [(ngModel)]="editedDetails.image">
+        </div>
+        <div class="form-group">
+          <label for="player-name">Name:</label>
+          <input type="text" class="form-control" name="player-name" [(ngModel)]="editedDetails.name">
+        </div>
+        <div class="form-group">
+            <label for="player-country">Country:</label>
+            <input type="text" class="form-control" name="player-country" [(ngModel)]="editedDetails.country">
+        </div>
+        <div class="form-group">
+            <label for="player-category">Category:</label>
+            <input type="text" class="form-control" name="player-category" [(ngModel)]="editedDetails.category">
+        </div>
+        <button type="submit" class="btn btn-outline-success">Update Details</button>
+      </form>
+    </div>
+  </div>
+</div>
