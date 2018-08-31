@@ -18,4 +18,8 @@ private baseUrl = "http://192.168.0.103:3030";
     return this.http.patch(`${this.baseUrl}/players/${player.id}`, player);
   }
 
+  deletePlayer(id) {
+    return this.http.delete(`${this.baseUrl}/players/${id}`);
+  }
+
 }

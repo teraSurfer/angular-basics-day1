@@ -1,3 +1,15 @@
-<p>
-  delete-player works!
-</p>
+<div class="container">
+    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+      <ngb-panel *ngFor="let plr of playerList">
+          <ng-template ngbPanelTitle>
+              <span><h3>{{plr.name}}</h3></span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <img [src]="plr.image" width="150px" height="150px" alt="plr image"><br/>
+            <p>{{plr.country}}</p><br/>
+            <p>{{plr.category}}</p><br/>
+            <button class="btn btn-outline-danger" (click)="deletePlayer(plr.id)">Delete Player</button>
+          </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+</div>
