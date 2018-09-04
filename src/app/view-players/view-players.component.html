@@ -1,9 +1,9 @@
-<ngb-pagination [collectionSize]="playersLength" [(page)]="page" aria-label="Default pagination" [pageSize]="playersPerPage" (pageChange)=loadPage($event)></ngb-pagination>
+<ngb-pagination [collectionSize]="playersLength" [(page)]="page" aria-label="Default pagination" [pageSize]="playersPerPage" (pageChange)="loadPage($event)"></ngb-pagination>
 <div class="card" *ngFor="let player of players" style="width: 18rem;">
   <img class="card-img-top" [src]="player.image" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{player.name}}</h5>
     <p class="card-text">{{player.country}}<br/>{{player.category}}</p>
-    <a href="#" class="btn btn-primary">View Player</a>
+    <a href="#" class="btn btn-primary" [routerLink]="player.id">View Player</a>
   </div>
 </div>

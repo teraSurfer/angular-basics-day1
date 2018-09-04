@@ -32,4 +32,8 @@ private baseUrl = "http://192.168.0.103:3030";
   createPlayer(player: Player) {
     return this.http.post(`${this.baseUrl}/players`, player);
   }
+
+  getPlayer(id: number) {
+    return this.http.get(`${this.baseUrl}/players/${id}`);
+  }
 }
